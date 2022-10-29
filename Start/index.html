@@ -8,16 +8,17 @@
   </head>
   <body>
     <div id="app">{{greeting}}</div>
+    <input type="text" />
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>
-      let app = Vue.createApp({
+        const { createApp } = Vue;
+        createApp({
         data: function () {
           return {
             greeting: "Hello Vue!",
           };
         },
-      });
-      app.mount("#app");
+      }).mount("#app");
     </script>
   </body>
 </html>
