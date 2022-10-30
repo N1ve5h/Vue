@@ -5,17 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue Basics</title>
+    <style>
+      .box {
+        height: 200px;
+        width: 200px;
+      }
+      .one {
+        background-color: purple;
+      }
+      .two {
+        background-color: red;
+      }
+      .three {
+        background-color: blue;
+      }
+    </style>
   </head>
   <body>
-    <div id="app">{{greeting}}</div>
-    <input type="text" />
+    <div id="app">
+      {{greeting}}
+      <input v-model="greeting" />
+      <button style="display: block;" @click="count++">Count is {{count}}</button>
+      <hr />
+      <div v-if="isVisible" class="box one"></div>
+      <div v-else-if="isVisible2" class="box two"></div>
+      <div v-else="isVisible" class="box three"></div>
+    </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>
-        const { createApp } = Vue;
-        createApp({
+      const { createApp } = Vue;
+      createApp({
         data: function () {
           return {
             greeting: "Hello Vue!",
+            isVisible: false,
+            isVisible2: false,
+            count: 0
           };
         },
       }).mount("#app");
